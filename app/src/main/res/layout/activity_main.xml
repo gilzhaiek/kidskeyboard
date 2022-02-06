@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline25h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline60h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline70h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline80h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline90h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9">
+
+    </androidx.constraintlayout.widget.Guideline>
+
+    <Button
+        style="@style/keyboard_key"
+        android:text="CLEAR"
+        app:layout_constraintBottom_toTopOf="@id/guideline60h"
+        app:layout_constraintEnd_toEndOf="@id/key_u"
+        app:layout_constraintStart_toStartOf="@id/key_t"
+        app:layout_constraintTop_toBottomOf="@id/guideline50h" />
+
+    <Button
+        style="@style/keyboard_key"
+        android:text="DELETE"
+        app:layout_constraintBottom_toTopOf="@id/guideline60h"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/key_i"
+        app:layout_constraintTop_toBottomOf="@id/guideline50h" />
+
+    <Button
+        android:id="@+id/key_q"
+        style="@style/keyboard_key"
+        android:text="Q"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_w"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_w"
+        style="@style/keyboard_key"
+        android:text="W"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_e"
+        app:layout_constraintStart_toEndOf="@id/key_q"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_e"
+        style="@style/keyboard_key"
+        android:text="E"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_r"
+        app:layout_constraintStart_toEndOf="@id/key_w"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_r"
+        style="@style/keyboard_key"
+        android:text="R"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_t"
+        app:layout_constraintStart_toEndOf="@id/key_e"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_t"
+        style="@style/keyboard_key"
+        android:text="T"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_y"
+        app:layout_constraintStart_toEndOf="@id/key_r"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_y"
+        style="@style/keyboard_key"
+        android:text="Y"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_u"
+        app:layout_constraintStart_toEndOf="@id/key_t"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_u"
+        style="@style/keyboard_key"
+        android:text="U"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_i"
+        app:layout_constraintStart_toEndOf="@id/key_y"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_i"
+        style="@style/keyboard_key"
+        android:text="I"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_o"
+        app:layout_constraintStart_toEndOf="@id/key_u"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_o"
+        style="@style/keyboard_key"
+        android:text="O"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toStartOf="@id/key_p"
+        app:layout_constraintStart_toEndOf="@id/key_i"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_p"
+        style="@style/keyboard_key"
+        android:text="P"
+        app:layout_constraintBottom_toTopOf="@id/guideline70h"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/key_o"
+        app:layout_constraintTop_toBottomOf="@id/guideline60h" />
+
+    <Button
+        android:id="@+id/key_a"
+        style="@style/keyboard_key"
+        android:text="A"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_s"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_s"
+        style="@style/keyboard_key"
+        android:text="S"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_d"
+        app:layout_constraintStart_toEndOf="@id/key_a"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_d"
+        style="@style/keyboard_key"
+        android:text="D"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_f"
+        app:layout_constraintStart_toEndOf="@id/key_s"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_f"
+        style="@style/keyboard_key"
+        android:text="F"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_g"
+        app:layout_constraintStart_toEndOf="@id/key_d"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_g"
+        style="@style/keyboard_key"
+        android:text="G"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_h"
+        app:layout_constraintStart_toEndOf="@id/key_f"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_h"
+        style="@style/keyboard_key"
+        android:text="H"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_j"
+        app:layout_constraintStart_toEndOf="@id/key_g"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_j"
+        style="@style/keyboard_key"
+        android:text="J"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_k"
+        app:layout_constraintStart_toEndOf="@id/key_h"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_k"
+        style="@style/keyboard_key"
+        android:text="K"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_l"
+        app:layout_constraintStart_toEndOf="@id/key_j"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_l"
+        style="@style/keyboard_key"
+        android:text="L"
+        app:layout_constraintBottom_toTopOf="@id/guideline80h"
+        app:layout_constraintEnd_toStartOf="@id/key_p"
+        app:layout_constraintStart_toEndOf="@id/key_k"
+        app:layout_constraintTop_toBottomOf="@id/guideline70h" />
+
+    <Button
+        android:id="@+id/key_z"
+        style="@style/keyboard_key"
+        android:text="Z"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_s"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_x"
+        style="@style/keyboard_key"
+        android:text="X"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_c"
+        app:layout_constraintStart_toEndOf="@id/key_z"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_c"
+        style="@style/keyboard_key"
+        android:text="C"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_v"
+        app:layout_constraintStart_toEndOf="@id/key_x"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_v"
+        style="@style/keyboard_key"
+        android:text="V"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_b"
+        app:layout_constraintStart_toEndOf="@id/key_c"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_b"
+        style="@style/keyboard_key"
+        android:text="B"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_n"
+        app:layout_constraintStart_toEndOf="@id/key_v"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_n"
+        style="@style/keyboard_key"
+        android:text="N"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_m"
+        app:layout_constraintStart_toEndOf="@id/key_b"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_m"
+        style="@style/keyboard_key"
+        android:text="M"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toStartOf="@id/key_k"
+        app:layout_constraintStart_toEndOf="@id/key_n"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_shift"
+        style="@style/keyboard_key"
+        android:text="SHIFT"
+        app:layout_constraintBottom_toTopOf="@id/guideline90h"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/key_k"
+        app:layout_constraintTop_toBottomOf="@id/guideline80h" />
+
+    <Button
+        android:id="@+id/key_space"
+        style="@style/keyboard_key"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_k"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline90h" />
+
+    <Button
+        android:id="@+id/key_left"
+        style="@style/keyboard_key.symbol"
+        android:text="←"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_right"
+        app:layout_constraintStart_toStartOf="@id/key_k"
+        app:layout_constraintTop_toBottomOf="@id/guideline90h" />
+
+    <Button
+        android:id="@+id/key_right"
+        style="@style/keyboard_key.symbol"
+        android:text="→"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/key_left"
+        app:layout_constraintTop_toBottomOf="@id/guideline90h" />
+
+    <TextView
+        android:id="@+id/text_output"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="48dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/guideline50h"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline25h" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline25h"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
