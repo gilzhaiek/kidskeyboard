@@ -17,7 +17,7 @@ import eightman.tech.kidskeyboard.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private val history = arrayListOf<String>()
     private var historyIndex = 0
     private var textInput = ""
@@ -100,16 +100,16 @@ class MainActivity : AppCompatActivity() {
                     if (historyIndex == history.size) {
                         historyIndex = 0
                     }
-                    history[historyIndex]
+                    textInput = history[historyIndex]
                     suggestion = textInput
                 }
                 updateHistory = false
             }
             else -> {
-                if (textInput.equals(suggestion, true) && suggestion.isNotEmpty()) {
-                    textInput = "$keyValue"
+                textInput = if (textInput.equals(suggestion, true) && suggestion.isNotEmpty()) {
+                    "$keyValue"
                 } else {
-                    textInput = "$textInput$keyValue"
+                    "$textInput$keyValue"
                 }
             }
         }
