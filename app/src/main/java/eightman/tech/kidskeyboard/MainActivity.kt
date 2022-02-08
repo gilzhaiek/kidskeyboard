@@ -67,14 +67,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onKeyClicked(view: View) {
-        var nextLetter = '-'
+        var nextLetter = '*'
         vibrate(10)
         var updateHistory = true
         when (val keyValue = (view as TextView).text) {
             "SHIFT" -> {
                 onShift()
             }
-            "CLEAR" -> textInput = ""
+            "CLEAR" -> {
+                suggestion = ""
+                textInput = ""
+            }
             "DELETE" -> {
                 if (textInput.isNotEmpty()) {
                     textInput = textInput.substring(0, textInput.length - 1)
@@ -115,6 +118,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         textInput = textInput.trimStart()
+        if(textInput.isNotEmpty()) {
+            nextLetter = '-'
+        }
 
         try {
             val textSearch = if (suggestion.startsWith(
@@ -134,6 +140,7 @@ class MainActivity : AppCompatActivity() {
                 imageView.setImageDrawable(ContextCompat.getDrawable(this, it))
             }
             // match
+            nextLetter = '+'
             vibrate(100)
             suggestion = ""
             textOutput.text = textInput
@@ -151,11 +158,27 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 if (suggestion.isEmpty()) {
-                    imageList.filter { it.startsWith("a_${textInput.replace(' ', '_')}", true) }
-                        .randomOrNull()
-                        ?.let {
-                            suggestion = it.substring(2).replace('_', ' ')
-                        }
+                    val sorted =
+                        imageList.filter { it.startsWith("a_${textInput.replace(' ', '_')}", true) }
+                            .sortedBy { it.length }
+                    var reduced = sorted
+                    while (reduced.isNotEmpty() && history.any {
+                            it.equals(
+                                reduced.first().substring(2).replace('_', ' '),
+                                true
+                            )
+                        }) {
+                        reduced = reduced.subList(1, reduced.size)
+                    }
+
+                    if (reduced.isNotEmpty()) {
+                        suggestion = reduced.first().substring(2).replace('_', ' ')
+                    } else {
+                        sorted.randomOrNull()
+                            ?.let {
+                                suggestion = it.substring(2).replace('_', ' ')
+                            }
+                    }
                 }
             } else {
                 suggestion = ""
@@ -257,5 +280,7 @@ class MainActivity : AppCompatActivity() {
         binding.keyY.setBackgroundColor(if (letter == 'y') nextColor else otherColor)
         binding.keyZ.setBackgroundColor(if (letter == 'z') nextColor else otherColor)
         binding.keySpace.setBackgroundColor(if (letter == ' ') nextColor else otherColor)
+        binding.keyClear.setBackgroundColor(if (letter == '+') nextColor else otherColor)
+        binding.keyDelete.setBackgroundColor(if (letter == '-') nextColor else otherColor)
     }
 }
