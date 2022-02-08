@@ -117,8 +117,17 @@ class MainActivity : AppCompatActivity() {
         textInput = textInput.trimStart()
 
         try {
+            val textSearch = if (suggestion.startsWith(
+                    textInput.trim(),
+                    true
+                ) && textInput.trim().length != suggestion.length
+            ) {
+                "__"
+            } else {
+                textInput
+            }
             resources.getIdentifier(
-                "drawable/a_${textInput.lowercase().replace(' ', '_')}",
+                "drawable/a_${textSearch.lowercase().replace(' ', '_')}",
                 null,
                 packageName
             ).let {
@@ -126,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             }
             // match
             vibrate(100)
-            suggestion = textInput
+            suggestion = ""
             textOutput.text = textInput
             if (updateHistory && history.none { it.equals(textInput, true) }) {
                 history.add(textInput)
