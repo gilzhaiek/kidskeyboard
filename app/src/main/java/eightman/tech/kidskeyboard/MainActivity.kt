@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.graphics.Color
 import android.os.*
+import android.speech.tts.TextToSpeech
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -14,9 +15,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import eightman.tech.kidskeyboard.databinding.ActivityMainBinding
+import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var binding: ActivityMainBinding
     private val history = arrayListOf<String>()
     private var historyIndex = 0
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageList: List<String>
     private var suggestion = ""
     private var isUpperCase = true
+    private lateinit var tts: TextToSpeech
+    private var soundOn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,15 @@ class MainActivity : AppCompatActivity() {
 
         imageList = R.drawable::class.java.fields.map { it.name }
             .filter { it.startsWith("a_") }
+
+        tts = TextToSpeech(this, this)
+    }
+
+    public override fun onDestroy() {
+        tts.stop()
+        tts.shutdown()
+
+        super.onDestroy()
     }
 
     private fun vibrate(millis: Long) {
@@ -67,6 +80,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onKeyClicked(view: View) {
+        if (view == binding.keySound) {
+            setSound(!soundOn)
+            return
+        }
         var nextLetter = '*'
         vibrate(10)
         var updateHistory = true
@@ -118,7 +135,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         textInput = textInput.trimStart()
-        if(textInput.isNotEmpty()) {
+        if (textInput.isNotEmpty()) {
             nextLetter = '-'
         }
 
@@ -144,6 +161,8 @@ class MainActivity : AppCompatActivity() {
             vibrate(100)
             suggestion = ""
             textOutput.text = textInput
+            speakOut(textInput)
+
             if (updateHistory && history.none { it.equals(textInput, true) }) {
                 history.add(textInput)
                 historyIndex = history.size - 1
@@ -282,5 +301,41 @@ class MainActivity : AppCompatActivity() {
         binding.keySpace.setBackgroundColor(if (letter == ' ') nextColor else otherColor)
         binding.keyClear.setBackgroundColor(if (letter == '+') nextColor else otherColor)
         binding.keyDelete.setBackgroundColor(if (letter == '-') nextColor else otherColor)
+    }
+
+    private fun speakOut(text: String) {
+        if (soundOn) {
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+        }
+    }
+
+    private fun setSound(on: Boolean) {
+        if (on) {
+            soundOn = true
+            resources.getIdentifier(
+                "drawable/soundon",
+                null,
+                packageName
+            ).let {
+                binding.keySound.setImageDrawable(ContextCompat.getDrawable(this, it))
+            }
+        } else {
+            soundOn = false
+            resources.getIdentifier(
+                "drawable/soundoff",
+                null,
+                packageName
+            ).let {
+                binding.keySound.setImageDrawable(ContextCompat.getDrawable(this, it))
+            }
+        }
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            binding.keySound.visibility = View.VISIBLE
+            tts.language = Locale.US
+            setSound(true)
+        }
     }
 }

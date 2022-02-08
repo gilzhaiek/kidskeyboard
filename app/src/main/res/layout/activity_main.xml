@@ -60,6 +60,16 @@
 
     </androidx.constraintlayout.widget.Guideline>
 
+    <ImageView
+        android:id="@+id/key_sound"
+        style="@style/keyboard_key"
+        android:src="@drawable/soundon"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/guideline60h"
+        app:layout_constraintEnd_toEndOf="@id/key_r"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline50h" />
+
     <Button
         android:id="@+id/key_clear"
         style="@style/keyboard_key"
