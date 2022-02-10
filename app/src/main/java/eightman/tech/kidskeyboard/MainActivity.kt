@@ -258,7 +258,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.keyS.text = if (toLowerCase) "s" else "S"
         binding.keyT.text = if (toLowerCase) "t" else "T"
         binding.keyU.text = if (toLowerCase) "u" else "U"
-        binding.keyV.text = if (toLowerCase) "v" else "v"
+        binding.keyV.text = if (toLowerCase) "v" else "V"
         binding.keyW.text = if (toLowerCase) "w" else "W"
         binding.keyX.text = if (toLowerCase) "x" else "X"
         binding.keyY.text = if (toLowerCase) "y" else "Y"
