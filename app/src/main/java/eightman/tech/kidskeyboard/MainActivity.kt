@@ -15,12 +15,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import eightman.tech.kidskeyboard.databinding.ActivityMainBinding
+import java.io.IOException
 import java.util.*
 
 
 class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var binding: ActivityMainBinding
-    private val history = arrayListOf<String>()
+    private lateinit var history: MutableList<String>
     private var historyIndex = 0
     private var textInput = ""
     private val textOutput: TextView get() = binding.textOutput
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var isUpperCase = true
     private lateinit var tts: TextToSpeech
     private var soundOn = false
+    private val sharedPref by lazy { getPreferences(Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             .filter { it.startsWith("a_") }
 
         tts = TextToSpeech(this, this)
+
+        history = sharedPref.getStringSet("HISTORY", emptySet())!!.toMutableList()
     }
 
     public override fun onDestroy() {
@@ -48,6 +52,21 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts.shutdown()
 
         super.onDestroy()
+    }
+
+    private fun addToHistory() {
+        history.add(textInput)
+        historyIndex = history.size - 1
+
+        // save the task list to preference
+        with(sharedPref.edit()) {
+            try {
+                putStringSet("HISTORY", history.toSet())
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            commit()
+        }
     }
 
     private fun vibrate(millis: Long) {
@@ -164,8 +183,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             speakOut(textInput)
 
             if (updateHistory && history.none { it.equals(textInput, true) }) {
-                history.add(textInput)
-                historyIndex = history.size - 1
+                addToHistory()
             }
         } catch (t: Throwable) {
             // no match

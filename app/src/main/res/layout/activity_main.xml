@@ -73,7 +73,7 @@
     <Button
         android:id="@+id/key_clear"
         style="@style/keyboard_key"
-        android:text="CLEAR"
+        android:text="@string/clear"
         app:layout_constraintBottom_toTopOf="@id/guideline60h"
         app:layout_constraintEnd_toEndOf="@id/key_u"
         app:layout_constraintStart_toStartOf="@id/key_t"
@@ -82,7 +82,7 @@
     <Button
         android:id="@+id/key_delete"
         style="@style/keyboard_key"
-        android:text="DELETE"
+        android:text="@string/delete"
         app:layout_constraintBottom_toTopOf="@id/guideline60h"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/key_i"

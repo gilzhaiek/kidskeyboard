@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kids Spelling Keyboard</string>
-    <string name="clear">CLEAR</string>
-    <string name="delete">DELETE</string>
+    <string name="delete">ELIMINAR</string>
 </resources>
